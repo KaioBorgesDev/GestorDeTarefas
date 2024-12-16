@@ -1,13 +1,13 @@
 # **Projeto: Gestão de Tarefas**
 
 ## **Objetivo**
-O objetivo deste projeto é construir uma aplicação web de **Gestão de Tarefas** utilizando **Express.js** para o backend, **MongoDB** para persistência de dados e aplicando os conceitos de **Domain-Driven Design (DDD)** para estruturar o código de forma escalável e fácil de manter.
+O objetivo deste projeto é construir uma aplicação web de **Gestão de Tarefas** utilizando **Express.js** para o backend, **MongoDB** para persistência de dados, aplicando os conceitos de **Clean Architecture** para estruturar o código de forma escalável, modular e fácil de manter.
 
 ## **Tecnologias Utilizadas**
 - **Backend**: Express.js
 - **Banco de Dados**: MongoDB
-- **Design de Arquitetura**: Domain-Driven Design (DDD)
-- **Outras ferramentas**: 
+- **Arquitetura**: Clean Architecture
+- **Outras ferramentas**:
   - **Mongoose**: Para modelar o banco de dados MongoDB
   - **Node.js**: Ambiente de execução
 
@@ -34,35 +34,39 @@ A aplicação permitirá que o usuário faça o **gerenciamento de suas tarefas*
 ### 6. **Filtrar Tarefas por Status**
 - O usuário pode filtrar tarefas com base no seu status (pendente ou concluída).
 
-## **Estrutura do Projeto - Arquitetura DDD**
+## **Estrutura do Projeto - Arquitetura Clean**
 
-A aplicação será estruturada de acordo com a arquitetura **Domain-Driven Design (DDD)**, que visa separar as responsabilidades de maneira clara, para promover a escalabilidade e facilidade de manutenção.
+A aplicação será estruturada de acordo com a **Clean Architecture**, que promove uma separação de responsabilidades clara em camadas, facilitando a escalabilidade e a manutenção. A arquitetura é composta pelas seguintes camadas:
 
-### **Camadas do DDD:**
+### **Camadas da Clean Architecture**:
 
-1. **Domain (Domínio)**:
-   - Responsável pelas regras de negócio. 
-   - Contém as entidades e serviços de domínio.
-   - **Entidade Tarefa**: A principal entidade do sistema, que representa uma tarefa com atributos como título, descrição e status.
+1. **Entidades (Entities)**:
+   - Contém as classes ou modelos que representam o núcleo do sistema e que encapsulam as regras de negócio fundamentais.
+   - **Exemplo**: A **Entidade Tarefa**, que possui atributos como título, descrição e status.
 
-2. **Application (Aplicação)**:
-   - Define os casos de uso da aplicação (os comportamentos que o sistema deve suportar).
-   - **Service**: Implementa os casos de uso, como criar, listar, editar e excluir tarefas.
+2. **Casos de Uso (Use Cases)**:
+   - Contém os casos de uso específicos da aplicação, representando a lógica que orquestra a execução de tarefas no sistema.
+   - **Exemplo**: Casos de uso como "Criar Tarefa", "Listar Tarefas", "Editar Tarefa", "Excluir Tarefa", etc.
 
-3. **Infrastructure (Infraestrutura)**:
-   - Interage com os sistemas externos (como o banco de dados, por exemplo).
-   - Utiliza o **Mongoose** para modelar e acessar o MongoDB.
-   - Responsável pela persistência de dados e por conectar o banco de dados.
+3. **Interfaces de Entrada (Interface Adapters)**:
+   - Adaptadores responsáveis por transformar os dados recebidos de entradas externas (como APIs, usuários ou sistemas) para o formato adequado para os casos de uso e entidades.
+   - **Exemplo**: Controladores da API RESTful, que recebem as requisições HTTP e invocam os casos de uso correspondentes.
 
-4. **Presentation (Apresentação)**:
-   - Exposição da API RESTful utilizando o **Express.js**.
-   - Aqui ficam as rotas da API que serão consumidas pelos usuários.
+4. **Infraestrutura (Frameworks & Drivers)**:
+   - Contém a implementação dos detalhes técnicos, como a comunicação com o banco de dados e outras interações com sistemas externos.
+   - **Exemplo**: O **Mongoose** para modelagem e acesso ao MongoDB.
+
+### **Fluxo da Aplicação:**
+1. **Usuário** interage com a API RESTful através do **Controller** (Camada de Apresentação).
+2. O **Controller** invoca os **Use Cases** (Casos de Uso), que executam a lógica de negócio.
+3. Os **Use Cases** interagem com as **Entities** (Entidades), que encapsulam as regras de negócio.
+4. Os **Use Cases** utilizam a **Infraestrutura** (como o Mongoose) para acessar o banco de dados e persistir ou recuperar dados.
 
 ## **Modelo de Dados (MongoDB)**
 
 A entidade **Tarefa** terá o seguinte modelo de dados:
 
-```javascript
+
 const mongoose = require('mongoose');
 
 const tarefaSchema = new mongoose.Schema({
