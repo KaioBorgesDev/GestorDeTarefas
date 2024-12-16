@@ -70,6 +70,7 @@ A entidade **Tarefa** terá o seguinte modelo de dados:
 const mongoose = require('mongoose');
 
 const tarefaSchema = new mongoose.Schema({
+  id_usuario: {type: String, required: true},
   titulo: { type: String, required: true },
   descricao: { type: String, required: true },
   status: { type: String, enum: ['Pendente', 'Concluída'], default: 'Pendente' },
