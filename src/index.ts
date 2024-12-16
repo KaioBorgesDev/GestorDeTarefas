@@ -1,8 +1,10 @@
-console.log("dsfasd");
+const express = require('express')
 
-let a = 1;
-let b = 2;
 
-interface Sensor {
-    name: string;
-}
+const app = express();
+
+app.get('/',(req,res)=>{
+    res.send("Hello World");
+})
+
+app.listen(5002)
