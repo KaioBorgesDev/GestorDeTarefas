@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-gestor-tarefas-volume:/data/db
+    restart: always
+
+
+  api:
+    container_name: api-gestor-tarefas
+    build: ./
+    restart: always
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mongo
+    env_file:
+      - ./.env
+
+
+
+volumes:
+  mongodb-gestor-tarefas-volume:
