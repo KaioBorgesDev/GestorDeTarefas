@@ -1,6 +1,6 @@
 
 # **COMO RODAR O PROJETO ?**
-## **Tendo Docker && Docker Compose rode este comando no terminal da pasta clonada:**
+## **Tendo Docker/Docker Compose, rode este comando no terminal da pasta clonada:**
 - **DOCKER COMPOSE UP --BUILD**
   
 # **Projeto: Gestão de Tarefas**
