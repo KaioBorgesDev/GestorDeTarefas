@@ -1,5 +1,6 @@
 services:
   mongo:
+    container_name: mongo-gestor-tarefas
     image: mongo:latest
     ports:
       - "27017:27017"
@@ -16,9 +17,8 @@ services:
       - "5002:5002"
     depends_on:
       - mongo
-    env_file:
-      - ./.env
-
+    volumes:
+      - ./:/api
 
 
 volumes:
