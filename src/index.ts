@@ -19,7 +19,7 @@ app.post("/", openTaskController);
 app.get("/listar", async (req, res) => {
     try {
         const task: Task[] = await listTask.execute();
-        res.status(201).send(task);
+        res.status(200).send(task);
     } catch (error) {
         res.status(400).send("Erro ao criar a task" + error);
     }
