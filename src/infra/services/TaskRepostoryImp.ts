@@ -1,13 +1,18 @@
 import TaskRepository from "src/adapters/repository/TaskRepository";
 import { Task } from "src/entitie/Task";
 import TaskModel from "../model/TaskModel";
+import { UUID } from "crypto";
 
 export default class TaskRepositoryImp implements TaskRepository {
     async get(uuid_task: String): Promise<Task | null> {
         return await TaskModel.findOne({ uuid: uuid_task });
     }
-    async save(task: Task): Promise<void> {
-        task.validateSave();
+    async save(
+        id_user: UUID,
+        title: String,
+        description: String
+    ): Promise<void> {
+        const task = new Task(id_user, title, description);
         await TaskModel.create(task);
     }
     async update(task: Task): Promise<void> {

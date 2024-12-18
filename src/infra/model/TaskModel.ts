@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import crypto from 'node:crypto';
+import crypto from "node:crypto";
 
 const TaskSchema = new Schema({
     uuid: { type: String, default: crypto.randomUUID },
