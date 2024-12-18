@@ -4,7 +4,7 @@ import TaskRepositoryImp from "src/infra/services/TaskRepostoryImp";
 import OpenTask from "src/usecases/OpenTask";
 
 
-const openTaskController = async (req, res) => {
+const OpenTaskController = async (req, res) => {
     const task: Task = req.body;
     const openTask = new OpenTask(new TaskRepositoryImp);
 
@@ -15,3 +15,4 @@ const openTaskController = async (req, res) => {
     }
 };
 
+module.exports = OpenTaskController;
