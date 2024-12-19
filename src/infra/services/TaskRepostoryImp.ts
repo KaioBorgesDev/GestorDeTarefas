@@ -4,6 +4,9 @@ import TaskModel from "../model/TaskModel";
 import { UUID } from "crypto";
 
 export default class TaskRepositoryImp implements TaskRepository {
+    close(uuid_task: UUID): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
     async get(uuid_task: String): Promise<Task | null> {
         return await TaskModel.findOne({ uuid: uuid_task });
     }
@@ -16,8 +19,7 @@ export default class TaskRepositoryImp implements TaskRepository {
         await TaskModel.create(task);
     }
     async update(task: Task): Promise<void> {
-        task.validateUpdate();
-
+        
         await TaskModel.findOneAndUpdate(
             { uuid: task.uuid },
             { $set: task },
