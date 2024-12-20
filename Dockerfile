@@ -16,5 +16,4 @@ ENV MONGO_URI_TEST=mongodb://mongo-gestor-tarefas:27017/gestor-tarefas
 
 CMD npx tsx watch --tsconfig tsconfig.json src/index.ts
 
-
 EXPOSE 5002

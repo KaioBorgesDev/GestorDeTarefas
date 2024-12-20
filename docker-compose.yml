@@ -20,6 +20,25 @@ services:
     volumes:
       - ./:/api
 
-
+  frontend:
+    container_name: frotend-gestor
+    build: ./frontend
+    depends_on:
+      - api
+    volumes:
+      - front-volume:/var/www/html
+    
+  nginx:
+    container_name: nginx-gestor
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - front-volume:/var/www/html 
+    depends_on:
+      - mongo
+      - api
+      - frontend
 volumes:
   mongodb-gestor-tarefas-volume:
+  front-volume:
