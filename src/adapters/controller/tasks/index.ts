@@ -3,6 +3,7 @@ module.exports = {
     listTaskController: require("./ListTaskController"),
     listTaskByStatusController: require("./ListTaskByStatusController"),
     closeTaskController: require("./CloseTaskController"),
-    removeTaskController: require("./RemoveTaskController")
-
+    removeTaskController: require("./RemoveTaskController"),
+    updateTaskController: require("./UpdateTaskController"),
+    getTaskController: require("./GetTaskController"),
 };

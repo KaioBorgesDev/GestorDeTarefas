@@ -5,7 +5,9 @@ const {
     listTaskController,
     listTaskByStatusController,
     closeTaskController,
-    removeTaskController
+    removeTaskController,
+    updateTaskController,
+    getTaskController,
 } = require("./adapters/controller/tasks/index");
 const connectDB = require("./infra/setting/connectDB");
 const app = express();
@@ -18,10 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", openTaskController);
 app.get("/listar", listTaskController);
 app.get("/listar/:status", listTaskByStatusController);
-app.post("/fechar/:uuid", closeTaskController)
-app.delete("/remove/:uuid", removeTaskController)
-
-
+app.post("/fechar/:uuid", closeTaskController);
+app.delete("/remove/:uuid", removeTaskController);
+app.put("/atualizar", updateTaskController);
+app.get("/:uuid", getTaskController);
 app.listen(5002);
 
 module.exports = app;

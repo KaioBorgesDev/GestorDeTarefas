@@ -7,7 +7,7 @@ export default class TaskRepositoryImp implements TaskRepository {
     close(uuid_task: UUID): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    async get(uuid_task: String): Promise<Task | null> {
+    async get(uuid_task: UUID): Promise<Task | null> {
         return await TaskModel.findOne({ uuid: uuid_task });
     }
     async save(
@@ -19,7 +19,7 @@ export default class TaskRepositoryImp implements TaskRepository {
         await TaskModel.create(task);
     }
     async update(task: Task): Promise<void> {
-        
+        console.log(task.uuid)
         await TaskModel.findOneAndUpdate(
             { uuid: task.uuid },
             { $set: task },

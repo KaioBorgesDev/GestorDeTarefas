@@ -6,7 +6,7 @@ export default interface TaskRepository {
     update(task: Task): Promise<void>;
     remove(uuid_task: UUID): Promise<void>;
     close(uuid_task: UUID): Promise<void>;
-    get(uuid_task: String): Promise<Task | null>;
+    get(uuid_task: UUID): Promise<Task | null>;
     getAll(): Promise<Task[]>;
     listByStatus(status: "Pendente" | "Concluída"): Promise<Task[]>;
 }
