@@ -10,7 +10,7 @@ const TaskSchema = new Schema({
     status: {
         type: String,
         enum: ["Pendente", "Concluída"],
-        default: "Concluída",
+        default: "Pendente",
     },
 });
 

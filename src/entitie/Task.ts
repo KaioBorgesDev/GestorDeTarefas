@@ -23,9 +23,9 @@ export class Task {
         if (this.title === "" || this.description === "")
             throw new Error("Titulo ou Descrição estão vazios.");
     }
-    validateClose() {
-        this.validateDate();
-        if (this.status === "Concluída")
+    static validateClose(task: Task) {
+        if (task.status === "Concluída")
             throw new Error("A Tarefa já está concluída.");
+        task.status = "Concluída";
     }
 }
