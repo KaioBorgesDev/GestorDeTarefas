@@ -1,4 +1,4 @@
-FROM node:16.20.2-alpine
+FROM node:23.4.0
 
 COPY . .
 
@@ -8,7 +8,7 @@ RUN rm -rf node_modules
 
 RUN npm i 
 
-RUN chown -R root:root .
+RUN chown -R root:root ./
 
 ENV NODE_ENV=testing
 
