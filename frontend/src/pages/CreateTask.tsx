@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { isEmpty } from 'lodash';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify'; // Importando o ToastContainer e toast
 import 'react-toastify/dist/ReactToastify.css'; // Importando o estilo do Toastify
@@ -27,7 +26,7 @@ const CreateTask = () => {
         event.preventDefault();
 
         // Verificando se os campos estão vazios
-        if (isEmpty(titleValue) || isEmpty(descriptionValue)) {
+        if (titleValue != '' || descriptionValue != '') {
             toast.error("Os campos estão vazios!"); // Exibe um toast de erro
             return;
         }
